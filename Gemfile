@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.1"
+ruby "2.7.2"
 
 gem "active_model_serializers", "~> 0.10.0"  # 追加
 gem "bootsnap", ">= 1.4.2", require: false
@@ -13,14 +13,14 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 
 group :development, :test do
+  gem "factory_bot_rails" # 追加
+  gem "faker" # 追加
   gem "pry-byebug" # 追加
   gem "pry-doc" # 追加
   gem "pry-rails" # 追加
+  gem "rspec-rails" # 追加
   gem "rubocop-rails" # 追加
   gem "rubocop-rspec" # 追加
-  gem "factory_bot_rails" # 追加
-  gem "faker" # 追加
-  gem "rspec-rails" # 追加
 end
 
 group :development do
