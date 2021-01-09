@@ -1,4 +1,3 @@
-class Api::V1::ArticlePreviewSerializer < ActiveModel::Serializer
-  attributes :id, :title, :updated_at
-  belongs_to :user, serializer: Api::V1::UserSerializer
+class Api::V1::UserSerializer < ActiveModel::Serializer
+  attributes :id, :name, :email
 end

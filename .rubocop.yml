@@ -8,6 +8,17 @@ inherit_from:
 
 AllCops:
   TargetRubyVersion: 2.7
-
+RSpec/NestedGroups:
+  Enabled: false
+RSpec/ContextWording:
+  Enabled: false
+RSpec/ExampleWording:
+  Enabled: false
+RSpec/MessageChain:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
 RSpec/MultipleExpectations:
   Enabled: false
+RSpec/ExampleLength:
+  Max: 10
