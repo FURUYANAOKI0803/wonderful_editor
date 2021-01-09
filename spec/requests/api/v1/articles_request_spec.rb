@@ -93,4 +93,31 @@ RSpec.describe "Api::V1::Articles", type: :request do
       end
     end
   end
+
+  describe "DELETE /articles/:id" do
+    subject { delete(api_v1_article_path(article_id)) }
+
+    # devise_token_auth の導入が完了後に削除
+    let(:current_user) { create(:user) }
+    let(:article_id) { article.id }
+
+    context "自分の記事を削除しようとするとき" do
+      let!(:article) { create(:article, user: current_user) }
+
+      it "記事を削除できる" do
+        expect { subject }.to change { Article.count }.by(-1)
+        expect(response).to have_http_status(:no_content)
+      end
+    end
+
+    context "他人が所持している記事のレコードを削除しようとするとき" do
+      let(:other_user) { create(:user) }
+      let!(:article) { create(:article, user: other_user) }
+
+      it "記事を削除できない" do
+        expect { subject }.to raise_error(ActiveRecord::RecordNotFound) &
+                              change { Article.count }.by(0)
+      end
+    end
+  end
 end
